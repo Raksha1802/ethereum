@@ -1,0 +1,235 @@
+swagger: '2.0'
+info:
+  title: Ledger API
+  description: >-
+    This service provides the API needed to implement operations on the
+    blockchain ledger.
+  version: 0.0.1
+host: localhost
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /OnboardWaste:
+    post:
+      summary: >-
+        This endpoint creates Trip.
+      parameters:
+        - name: address
+          in: query
+          required: true
+          type: string
+      tags:
+        - Services
+      responses:
+        '200':
+          description: Response object contains the transactionhash.
+  /OnboardOptimizer:
+    post:
+      summary: >-
+        This endpoint creates Trip.
+      parameters:
+        - name: address
+          in: query
+          required: true
+          type: string
+      tags:
+        - Services
+      responses:
+        '200':
+          description: Response object contains the transactionhash.
+  /OnboardStorage:
+    post:
+      summary: >-
+        This endpoint creates Trip.
+      parameters:
+        - name: address
+          in: query
+          required: true
+          type: string
+      tags:
+        - Services
+      responses:
+        '200':
+          description: Response object contains the transactionhash. 
+  /OnboardDisposal:
+    post:
+      summary: >-
+        This endpoint creates Trip.
+      parameters:
+        - name: address
+          in: query
+          required: true
+          type: string
+      tags:
+        - Services
+      responses:
+        '200':
+          description: Response object contains the transactionhash.
+  /createTrip:
+    post:
+      summary: >-
+        This endpoint creates Trip.
+      parameters:
+        - name: capacity
+          in: query
+          required: true
+          type: number
+        - name: fieldId
+          in: query
+          required: true
+          type: string
+        - name: tankId
+          in: query
+          required: true
+          type: string
+        - name: disposalTankId
+          in: query
+          required: true
+          type: string
+        - name: cost  
+          in: query
+          required: true
+          type: number
+        - name: hours  
+          in: query
+          required: true
+          type: number
+      tags:
+        - wasteMgmt
+      responses:
+        '200':
+          description: Response object contains the transactionhash.
+  /acceptTrip:
+    post:
+      summary: >-
+        This endpoint Accepts a Trip.
+      parameters:
+        - name: truckVolume
+          in: query
+          required: true
+          type: number
+        - name: truckId
+          in: query
+          required: true
+          type: string
+        - name: tripId
+          in: query
+          required: true
+          type: string
+      tags:
+        - driver
+      responses:
+        '200':
+          description: Response object contains the transactionhash..
+  /pumpAtDisposal:
+    post:
+      summary: >-
+        This endpoint trigger pumping of water at DisposalSite.
+      parameters:
+        - name: tripId
+          in: query
+          required: true
+          type: string
+      tags:
+        - driver
+      responses:
+        '200':
+          description: Response object contains the transactionhash.
+  /pumpAtOilField:
+    post:
+      summary: >-
+        This endpoint trigger pumping of water at Oilfield.
+      parameters:
+        - name: tripId
+          in: query
+          required: true
+          type: string
+      tags:
+        - driver
+      responses:
+        '200':
+          description: Response object contains the transactionhash.
+  /leaveOilField:
+    post:
+      summary: >-
+        This endpoint trigger Truck Leaving Oilfield.
+      parameters:
+        - name: tripId
+          in: query
+          required: true
+          type: string
+      tags:
+        - driver
+      responses:
+        '200':
+          description: Response object contains the transactionhash.
+  /leaveDisposal:
+    post:
+      summary: >-
+        This endpoint trigger Truck Leaving DisposalSite.
+      parameters:
+        - name: tripId
+          in: query
+          required: true
+          type: string
+      tags:
+        - driver
+      responses:
+        '200':
+          description: Response object contains the transactionhash.
+  /waterpumped:
+    post:
+      summary: >-
+        This endpoint specifies the water pumped.
+      parameters:
+        - name: waterfilled
+          in: query
+          required: true
+          type: number
+        - name: tripId
+          in: query
+          required: true
+          type: string
+      tags:
+        - StorageTank
+      responses:
+        '200':
+          description: Response object contains the transactionhash.
+  /waterdumped:
+    post:
+      summary: >-
+        This endpoint specifies the water pumped.
+      parameters:
+        - name: waterdumped
+          in: query
+          required: true
+          type: number
+        - name: tripId
+          in: query
+          required: true
+          type: string
+      tags:
+        - DisposalTank
+      responses:
+        '200':
+          description: Response object contains the transactionhash.
+  /payInvoice:
+    post:
+      summary: >-
+        This endpoint specifies the invoice getting paid.
+      parameters:
+        - name: tripId
+          in: query
+          required: true
+          type: string
+      tags:
+        - wasteMgmt
+      responses:
+        '200':
+          description: Response object contains the transactionhash.
+  
+      
